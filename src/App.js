@@ -3,6 +3,9 @@ import Notes from "./pages/Notes";
 import Create from "./pages/Create";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import Layout from "./components/Layout";
 
 // override the object theme of material ui which can be found on docs to speicify ceratin properties
 const theme = createTheme({
@@ -24,21 +27,27 @@ const theme = createTheme({
 		fontWeightBold: 700,
 	},
 });
+export const queryClient = new QueryClient();
 
 function App() {
 	return (
-		<ThemeProvider theme={theme}>
-			<Router>
-				<Switch>
-					<Route exact path="/">
-						<Notes />
-					</Route>
-					<Route path="/create">
-						<Create />
-					</Route>
-				</Switch>
-			</Router>
-		</ThemeProvider>
+		<QueryClientProvider client={queryClient}>
+			<ThemeProvider theme={theme}>
+				<Router>
+					<Layout>
+						<Switch>
+							<Route exact path="/">
+								<Notes />
+							</Route>
+							<Route path="/create">
+								<Create />
+							</Route>
+						</Switch>
+					</Layout>
+				</Router>
+			</ThemeProvider>
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
 	);
 }
 
