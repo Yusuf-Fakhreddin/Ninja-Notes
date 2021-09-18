@@ -4,34 +4,45 @@ import { useMutation, useQuery } from "react-query";
 import { queryClient } from "../App";
 import NoteCard from "../components/NoteCard";
 import { deleteNote, getNotes } from "../queriesFunctions";
-
+import Masonry from "react-masonry-css";
 export default function Notes() {
 	const { data, error, isLoading, isError, status } = useQuery(
 		"notes",
 		getNotes
 	);
 	console.log(data);
-	const { mutateAsync: DeleteNote, isLoading } = useMutation(deleteNote);
-	const handleDelete = async () => {
+	const { mutateAsync: DeleteNote, isLoading: loading } =
+		useMutation(deleteNote);
+	const handleDelete = async (id) => {
 		await DeleteNote(id);
 		queryClient.invalidateQueries("notes");
 	};
 
+	const breakPoints = {
+		default: 3,
+		// at page width: number of columns
+		1100: 2,
+		700: 1,
+	};
+
 	return (
 		<Container>
-			Notes page
-			{/* 3* base spacing value of material ui */}
-			<Grid container spacing={3}>
-				{" "}
+			{/* 3* base spacing value of material ui */}{" "}
+
+			<Masonry
+				breakpointCols={breakPoints}
+				className="my-masonry-grid"
+				columnClassName="my-masonry-grid_column"
+			>
 				{data &&
 					React.Children.toArray(
 						data.map((note) => (
-							<Grid item xs={12} md={6} lg={4}>
+							<div>
 								<NoteCard note={note} handleDelete={handleDelete} />
-							</Grid>
+							</div>
 						))
 					)}
-			</Grid>
+			</Masonry>
 		</Container>
 	);
 }

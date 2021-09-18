@@ -1,7 +1,14 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Notes from "./pages/Notes";
 import Create from "./pages/Create";
-import { createTheme, ThemeProvider } from "@material-ui/core";
+import {
+	AppBar,
+	createTheme,
+	makeStyles,
+	ThemeProvider,
+	Toolbar,
+	Typography,
+} from "@material-ui/core";
 import { purple } from "@material-ui/core/colors";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";

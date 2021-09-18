@@ -19,10 +19,22 @@
       "id": 3
     },
     {
-      "title": "hello ",
-      "details": "hello world",
-      "category": "todos",
+      "title": "Hello there",
+      "details": "my name is khan",
+      "category": "work",
       "id": 4
+    },
+    {
+      "title": "another one",
+      "details": "\t\t\tLorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, exercitationem. Ipsam porro impedit autem repellat omnis, facere animi, possimus cum repellendus quos eos, placeat aspernatur odit deserunt ad aperiam ullam?",
+      "category": "money",
+      "id": 5
+    },
+    {
+      "title": "hi again",
+      "details": "\t\t\tLorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, exercitationem. Ipsam porro impedit autem repellat omnis, facere animi, possimus cum repellendus quos eos, placeat aspernatur odit deserunt ad aperiam ullam?\t\t\tLorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, exercitationem. Ipsam porro impedit autem repellat omnis, facere animi, possimus cum repellendus quos eos, placeat aspernatur odit deserunt ad aperiam ullam?",
+      "category": "money",
+      "id": 6
     }
   ]
 }
